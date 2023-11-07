@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exam</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+        .moving-div {
+            width: 50px;
+            height: 50px;
+            background-color:crimson;
+            position: relative;
+        }
+        </style>
+    </head>
+<body>
+    <div class="moving-div"></div>
+    <button id="right-move">Right Move</button>
+    <button id="left-move">Left Move</button>
+    <script>
+    $(document).ready(function() {
+        let divHeight = 50;
+        let divWidth = 50;
+        let currentPosition = 0;
+        $('#right-move').click(function() {
+            currentPosition += 250;
+            divHeight += 50
+            divWidth += 50;
+            $('.moving-div').animate({
+                left: currentPosition,
+                width: divWidth,
+                height:divHeight
+            }, 500);
+            alert('Moved to the right!');
+        });
+        $('#left-move').click(function() {
+            currentPosition = 0;
+            divWidth = 50;
+            divHeight=50;
+            $('.moving-div').animate({
+                left: currentPosition,
+                width: divWidth,
+                height:divHeight
+            }, 500);
+            alert('Moved to the initial position!');
+        });
+    });
+    </script>
+</body>
+</html>
