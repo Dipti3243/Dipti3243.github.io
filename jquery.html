@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+         $("button").click(function(){
+           $("#a").fadeIn(1000);
+           $("#b").fadeIn(2000);
+           $("#c").fadeIn(3000);
+         });
+        });
+    </script>
+</head>
+<body>
+    <p>Applying fadein effect on each box with different timing.</p>
+    <button>Hit the button to get fadein effect.</button><br><br>
+    <div id="a" style="width:40px;height:60px;display:none;background-color:brown;">
+    </div><br>
+    <div id="b" style="width:40px;height:60px;display:none;background-color:yellow;">
+    </div><br>
+    <div id="c" style="width:40px;height:60px;display:none;background-color:orange;">
+</body>
+</head>
