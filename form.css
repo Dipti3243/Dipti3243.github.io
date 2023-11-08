@@ -1,0 +1,49 @@
+form.form{
+    display: table;
+    
+}
+div.form{
+    display: table table-row;
+    
+}
+label,input{
+    margin-bottom:15px ;
+}
+label{
+    padding-right: 15px;
+}
+.d1{
+    background-color: aqua;
+    width: 500px;
+    height: 400px;
+    padding:10px  ;
+    margin:5px;
+    font-size: large;
+}
+.dropdown{
+    padding: 10px;
+    border: 2px solid black;
+    font-size: large;
+    width: 150px;
+    height: 53px;
+}
+.dropdown option[value="option1"]{
+    font-size: 20px;
+    color: red;
+}
+.dropdown option[value="option2"]{
+    font-size: 20px;
+    color: green;
+}
+.dropdown option[value="option3"]{
+    font-size: 20px;
+    color: blue;
+}
+.dropdown option[value="option4"]{
+    font-size: 20px;
+    color: yellow;
+}
+.dropdown option[value="option5"]{
+    font-size: 20px;
+    color: pink;
+}
