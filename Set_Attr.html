@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script>
+    $(document).ready(function(){
+      $("#b1").click(function(){
+		    $("#w3s").attr("href", "https://www.reddit.com");
+      });
+      $("#b1").click(function(){
+        $("#w3s").html("Reddit.com");
+      });
+    });
+</script>
+</head>
+<body>
+    <p id="par1"><a href="https://www.google.com" id="w3s">Google.com</a></p>
+    <button id="b1">Click to change the href value</button>
+    <p>After clicking the link, place your cursor on the hyperlink and check the link
+     address or click it to go to other website.</p>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+    $(document).ready(function(){
+      $("#button").click(function(){
+		    alert("Value: " + $("#txt").val());
+      });
+    });
+</script>
+     
+</head>
+<body>
+  <p>Username: <input type="text" id="txt" value="Ghost Rider"></p>
+  <button id ="button">Check the Value</button>
+</body>
+</head>
+</html>
