@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-size: large;
+        }
+        p {
+            top: 200px;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1">Hello</p>
+    <p id="p2">Hello Jquery</p>
+    <img src="./10617114.jpg" alt="" width="50px">
+    <button id="btn-1">Slide Down</button>
+    <button id="btn-2">Animate</button>
+    <button id="btn-3">Fade In</button>
+    <button id="btn-4">Hide</button>
+    <button id="btn-5">Show</button>
+    <button id="btn-6">Set attribute</button>
+    <button id="btn-7">Set html</button>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#p1").slideUp();
+        $("#btn-1").click(function () {
+            $("#p1").slideDown();
+        });
+    });
+    $(document).ready(function () {
+        $("#btn-2").click(function () {
+            $("#p1").animate({ left: '250px' });
+        });
+    });
+    $(document).ready(function () {
+        $("#btn-3").click(function () {
+            $("#p1").fadeOut();
+            $("#p1").fadeIn();
+        });
+    });
+    $(document).ready(function () {
+        $("#btn-4").click(function () {
+            $("#p1").hide();
+        });
+    });
+    $(document).ready(function () {
+        $("#btn-5").click(function () {
+            $("#p1").show();
+        });
+    });
+    $(document).ready(function () {
+        $("#p1").mouseenter(function () {
+            $("#p1").css("font-size", "100px");
+        });
+    });
+    $(document).ready(function () {
+        $("#p1").mouseleave(function () {
+            $("#p1").css("font-size", "40px");
+        });
+    });
+    $(document).ready(function () {
+        $("#p2").dblclick(function () {
+            $("#p2").css("background-color", "red");
+        });
+        $("#btn-6").click(function () {
+            $("img").attr("width", "300px");
+        });
+        $("#btn-7").click(function () {
+            $("#p2").html("Hello!");
+        });
+    });
+</script>
+</html>
