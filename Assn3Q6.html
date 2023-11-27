@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dynamic Table Manipulation</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="addRowBtn">Add Row</button>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <input type="text" id="removeById" placeholder="Enter ID to Remove">
+    <button id="removeRowBtn">Remove Row</button>
+
+    <script>
+        // Counter for unique row IDs
+        let idCounter = 1;
+
+        // Function to add a new row to the table
+        function addRow() {
+            const tableBody = $("#dataTable tbody");
+            const newRow = $("<tr>");
+            newRow.append(`<td>${idCounter}</td>`);
+            newRow.append(`<td>Data ${idCounter}</td>`);
+            tableBody.append(newRow);
+            idCounter++;
+        }
+
+        // Function to remove rows based on entered ID
+        function removeRow() {
+            const removeId = $("#removeById").val();
+            $(`#dataTable tbody tr:has(td:contains('${removeId}'))`).remove();
+        }
+
+        // Change text color on button click
+        $("#addRowBtn").click(function () {
+            addRow();
+            $(this).css("color", "red");
+        });
+
+        $("#removeRowBtn").click(function () {
+            removeRow();
+            $(this).css("color", "blue");
+        });
+    </script>
+
+</body>
+</html>

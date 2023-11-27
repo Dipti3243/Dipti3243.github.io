@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        #game-container {
+            text-align: center;
+        }
+        #result {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #score {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #choices {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .choice {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="result">Choose your move:</div>
+        <div id="score">Score: <span id="user-score">0</span> - <span id="computer-score">0</span></div>
+        <div id="choices">
+            <div class="choice" onclick="playGame('rock')">Rock</div>
+            <div class="choice" onclick="playGame('paper')">Paper</div>
+            <div class="choice" onclick="playGame('scissors')">Scissors</div>
+        </div>
+    </div>
+
+    <script>
+        // Initial scores
+        let userScore = 0;
+        let computerScore = 0;
+
+        // Function to play the game
+        function playGame(userChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            // Determine the winner
+            const result = determineWinner(userChoice, computerChoice);
+
+            // Display the result
+            document.getElementById('result').innerText = `You chose ${userChoice}. Computer chose ${computerChoice}. ${result}`;
+
+            // Update the scores
+            if (result.includes('Win')) {
+                userScore++;
+            } else if (result.includes('Lose')) {
+                computerScore++;
+            }
+
+            // Display the scores
+            document.getElementById('user-score').innerText = userScore;
+            document.getElementById('computer-score').innerText = computerScore;
+        }
+
+        // Function to determine the winner
+        function determineWinner(userChoice, computerChoice) {
+            if (userChoice === computerChoice) {
+                return "It's a tie!";
+            }
+            if ((userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === 'paper')) {
+                return "You Win!";
+            }
+            return "You Lose!";
+        }
+    </script>
+
+</body>
+</html>

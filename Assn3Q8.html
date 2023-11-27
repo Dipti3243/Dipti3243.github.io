@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .job-search {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .job-card {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid rgb(111, 111, 45);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .job-card:hover {
+            background-color: #d19191;
+        }
+
+        input,
+        select {
+            padding: 1rem 1rem;
+            width: 30%;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#search").on("input", function () {
+                const searchText = $(this).val().toLowerCase();
+                filterJobs(searchText, $("#category-filter").val());
+            });
+            $("#category-filter").change(function () {
+                const searchText = $("#search").val().toLowerCase();
+                filterJobs(searchText, $(this).val());
+            });
+            function filterJobs(searchText, category) {
+                $(".job-card").each(function () {
+                    const jobCategory = $(this).data("category");
+                    const jobText = $(this).text().toLowerCase();
+                    const isVisible = jobCategory === category || category === "all";
+                    const matchesSearch = jobText.includes(searchText);
+                    $(this).toggle(isVisible && matchesSearch);
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="job-search">
+        <input type="text" id="search" placeholder="Search jobs" />
+        <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="design">Block Level</option>
+            <option value="development">PRD Department</option>
+            <option value="marketing">RWD Department</option>
+            <option value="sales">Gram Panchayat Level</option>
+            <option value="finance">Finance Department</option>
+        </select>
+    </div>
+    <div class="job-listings">
+        <div class="job-card" data-category="design">Junior Engineer</div>
+        <div class="job-card" data-category="design">Assistant Engineer</div>
+        <div class="job-card" data-category="design">BDO</div>
+        <div class="job-card" data-category="development">
+            ABDO
+        </div>
+        <div class="job-card" data-category="development">
+            Sarapanch
+        </div>
+        <div class="job-card" data-category="development">
+            Collector
+        </div>
+        <div class="job-card" data-category="marketing">
+            Assistant Executive Engineer
+        </div>
+        <div class="job-card" data-category="marketing">
+            Contractor
+        </div>
+        <div class="job-card" data-category="marketing">PEO</div>
+        <div class="job-card" data-category="sales">Project Director</div>
+        <div class="job-card" data-category="sales">Account Manager</div>
+        <div class="job-card" data-category="sales">
+            Business Development Representative
+        </div>
+        <div class="job-card" data-category="finance">Financial Analyst</div>
+        <div class="job-card" data-category="finance">Investment Banker</div>
+        <div class="job-card" data-category="finance">Accountant</div>
+    </div>
+</body>
+
+</html>

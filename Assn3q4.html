@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <title>Question4</title>
+  <script>
+    $(document).ready(function () {
+      $(".btn").click(function () {
+        $(".pop1").animate({ top: "0.7%" });
+        $("*").css({ " opacity": " 0.1%" });
+      })
+    })
+  </script>
+  <style>
+    .pop1 {
+      position: absolute;
+      top: -18%;
+      height: 100px;
+      width: 300px;
+      background-color: bisque;
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 10px;
+    }
+    .place {
+      display: grid;
+      place-items: center;
+    }
+    p {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn">pop up</button>
+  <div class="place">
+    <div class="pop1">
+      <p>this is my pop up</p>
+    </div>
+  </div>
+</body>
+
+</html>

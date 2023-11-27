@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="signupForm" onsubmit="return validateForm()">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+
+        <input type="submit" value="Sign Up">
+
+        <div id="errorMessages" class="error-message"></div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var fullName = document.forms["signupForm"]["fullName"].value;
+            var email = document.forms["signupForm"]["email"].value;
+            var password = document.forms["signupForm"]["password"].value;
+            var errorMessages = "";
+
+            if (fullName == "") {
+                errorMessages += "Full Name is required.<br>";
+            }
+
+            if (email == "") {
+                errorMessages += "Email is required.<br>";
+            } else {
+                // Simple email format validation
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorMessages += "Email is not formatted correctly.<br>";
+                }
+            }
+
+            if (password == "") {
+                errorMessages += "Password is required.<br>";
+            }
+
+            if (errorMessages !== "") {
+                document.getElementById("errorMessages").innerHTML = errorMessages;
+                return false; // Prevent form submission
+            }
+
+            // Continue with form submission if all fields are valid
+            return true;
+        }
+    </script>
+
+</body>
+</html>
