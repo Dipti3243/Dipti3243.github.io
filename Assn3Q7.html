@@ -1,102 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+    <head>
+    <title>Question-7</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+            $("#myForm").submit(function(event){
+                event.preventDefault();
+                $("#error-box").html("");
+                var username = $("#name").val();
+                var email = $("#email").val();
+                if (username == ""||username==null||email == ""||email==null) {
+                    $("#error-box").html("All fields must be filled out");
+                    return;
+                }
+                alert("Form submitted successfully!");
+                $("#myForm")[0].reset(); 
+                //reset is a jquery function used to reset the form after submitting it
+            });
+        });
+</script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        body{
+            background-color:rgb(226, 250, 250);
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
         }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        input {
+        form{
             width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
+            max-width: 500px;
+            margin: 8% auto;
+            color: rgb(0, 7, 139);
+            font-size: larger;
+            padding: 20px;
+            border: 3px solid #e87676;
+            background-color: rgba(220, 248, 174, 0.438);
+            border-radius: 10px;
+            box-shadow: 12px 15px rgba(95, 26, 26,90);
+        }
+        input{
+            width: 75%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;            
         }
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
             cursor: pointer;
+            margin-left: 75px;
         }
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: rgb(7, 125, 131);
         }
-        .error-message {
-            color: red;
-            margin-top: 8px;
+        .error{
+            color: rgb(250, 67, 67);
+            margin-top: 5px;
+            font-size: 25px;
         }
     </style>
 </head>
 <body>
+    <form id="myForm">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" value="" placeholder="Your name..." >
 
-    <form id="signupForm" onsubmit="return validateForm()">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email">
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
-
-        <input type="submit" value="Sign Up">
-
-        <div id="errorMessages" class="error-message"></div>
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" value="" placeholder="Your email...">
+        <input type="submit" value="Submit">
+        <div id="error-box" class="error"></div>
     </form>
-
-    <script>
-        function validateForm() {
-            var fullName = document.forms["signupForm"]["fullName"].value;
-            var email = document.forms["signupForm"]["email"].value;
-            var password = document.forms["signupForm"]["password"].value;
-            var errorMessages = "";
-
-            if (fullName == "") {
-                errorMessages += "Full Name is required.<br>";
-            }
-
-            if (email == "") {
-                errorMessages += "Email is required.<br>";
-            } else {
-                // Simple email format validation
-                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    errorMessages += "Email is not formatted correctly.<br>";
-                }
-            }
-
-            if (password == "") {
-                errorMessages += "Password is required.<br>";
-            }
-
-            if (errorMessages !== "") {
-                document.getElementById("errorMessages").innerHTML = errorMessages;
-                return false; // Prevent form submission
-            }
-
-            // Continue with form submission if all fields are valid
-            return true;
-        }
-    </script>
-
 </body>
+
 </html>
